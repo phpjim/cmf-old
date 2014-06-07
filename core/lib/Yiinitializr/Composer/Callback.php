@@ -55,6 +55,7 @@ namespace Yiinitializr\Composer;
 use Composer\Script\Event;
 use Yiinitializr\Helpers\Initializer;
 use Yiinitializr\Helpers\Config;
+use Yiinitializr\Helpers\JimDeploy;
 use Yiinitializr\Cli\Console;
 
 class Callback
@@ -186,6 +187,8 @@ class Callback
 			Initializer::createRuntimeFolders();
 
 			Initializer::createRuntimeFolders('assets');
+
+            JimDeploy::deploy();
 
 			if (is_file(Config::value('yiinitializr.config.console')))
 				$app = \Yii::createConsoleApplication(Config::value('yiinitializr.config.console'));

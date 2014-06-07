@@ -48,7 +48,13 @@ return array(
 					'backend' => array('env', 'local'),
 					'common' => array('env', 'local'),
 					'api' => array('env', 'local')
-				)
+				),
+                'bootstrap' => array(
+                    'frontend' => $root . '/htdocs/frontend/index.php',
+                    'console' => $root . '/core/yiic.php',
+                    'backend' => $root . '/htdocs/backend/index.php',
+                    'api' => $root . '/htdocs/api/index.php',
+                )
 			),
 			/*
 			 * uncomment this lines to provide custom class for web and/or console
