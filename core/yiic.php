@@ -1,6 +1,6 @@
 <?php
 /**
- * Bootstrap index file
+ * Yiic.php bootstrap file
  *
  * @author Vadims Bucinskis <vadim.buchinsky@gmail.com>
  * @copyright 2014 MaWebSolutions team.
@@ -10,7 +10,7 @@ define("JIM_ROOT", "{{projectRoot}}");
 
 require(JIM_ROOT . 'core/lib/vendor/autoload.php');
 
-Yiinitializr\Helpers\Initializer::create(JIM_ROOT .'core/', 'api', array(
+Yiinitializr\Helpers\Initializer::create(JIM_ROOT .'core/', 'console', array(
     JIM_ROOT . 'core/common/config/main.php',
     JIM_ROOT . 'core/common/config/env.php',
     JIM_ROOT . 'core/common/config/local.php'

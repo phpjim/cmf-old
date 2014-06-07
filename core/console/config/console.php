@@ -16,6 +16,9 @@ return array(
 		'migrate' => array(
 			'class' => 'system.cli.commands.MigrateCommand',
 			'migrationPath' => 'application.migrations'
-		)
+		),
+        'messages'=>array(
+            'class' => '\\application\\components\\MessageCommand',
+        ),
 	)
 );

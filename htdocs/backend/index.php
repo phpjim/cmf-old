@@ -2,18 +2,16 @@
 /**
  * Bootstrap index file
  *
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.2amigos.us/
- * @copyright 2013 2amigOS! Consultation Group LLC
- * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @author Vadims Bucinskis <vadim.buchinsky@gmail.com>
+ * @copyright 2014 MaWebSolutions team.
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+define("JIM_ROOT", "{{projectRoot}}");
 
-require('./../core/lib/vendor/autoload.php');
+require(JIM_ROOT . 'core/lib/vendor/autoload.php');
 
-
-Yiinitializr\Helpers\Initializer::create('./../', 'backend', array(
-	__DIR__ .'/../../common/config/main.php',
-	__DIR__ .'/../../common/config/env.php',
-	__DIR__ .'/../../common/config/local.php'
+Yiinitializr\Helpers\Initializer::create(JIM_ROOT .'core/', 'backend', array(
+    JIM_ROOT . 'core/common/config/main.php',
+    JIM_ROOT . 'core/common/config/env.php',
+    JIM_ROOT . 'core/common/config/local.php'
 ))->run();
