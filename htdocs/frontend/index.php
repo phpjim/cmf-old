@@ -6,7 +6,7 @@
  * @copyright 2014 MaWebSolutions team.
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-define("JIM_ROOT", "{{projectRoot}}");
+define("JIM_ROOT", "{PROJECT_ROOT}");
 
 require(JIM_ROOT . 'core/lib/vendor/autoload.php');
 
