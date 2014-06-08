@@ -235,7 +235,7 @@ class Initializer
 			} else
 				self::output("'{$name}'\n%pfolder already exists. No action has been executed.%n");
 		}
-		self::output("\n%gRuntime '{$name}'' folders creation process finished.%n");
+		self::output("\n%gRuntime '{$name}' folders creation process finished.%n");
 	}
 
 	/**
