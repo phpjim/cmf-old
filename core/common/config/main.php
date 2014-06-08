@@ -5,6 +5,7 @@
  * @copyright 2014 MaWebSolutions team.
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
+@defined(JIM_ROOT) or @define(JIM_ROOT, realpath(__DIR__ . "/../../../"));
 
 return array(
 	'name' => '{APPLICATION NAME}',
