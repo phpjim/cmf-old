@@ -7,11 +7,13 @@
  */
 return array(
 	'modules' => array(
+        '{BLOCK_GII_START}',
 		'gii' => array(
 			'class' => 'system.gii.GiiModule',
-			'password' => 'yii',
-			'ipFilters' => array('127.0.0.1','::1'),
+			'password' => '{GII_PASSWORD}',
+			'ipFilters' => '{GII_IPFILTER}',
 		),
+        '{BLOCK_GII_END}',
 	),
 	'components' => array(
 		// configure to suit your needs
