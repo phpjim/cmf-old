@@ -11,15 +11,26 @@ defined('APP_CONFIG_NAME') or define('APP_CONFIG_NAME', 'frontend');
 
 // web application configuration
 return array(
-	'basePath' => realPath(__DIR__ . '/..'),
+    'theme'=>'default',
+    'basePath' => JIM_ROOT . 'core/frontend',
+    'controllerNamespace'=>'\\application\\controllers',
 	'components' => array(
+        'themeManager' => array(
+            'basePath' => JIM_ROOT . 'core/frontend/themes'
+        ),
+        'assetManager' => array(
+            'linkAssets' => true
+        ),
 		'urlManager' => array(
 			'urlFormat' => 'path',
 			'showScriptName' => false,
 			'rules' => array(
 				'<controller:\w+>/<id:\d+>' => '<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-				'<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+				'<module:\w+>/<controller:\w+>/<id:\d+>' => '<module>/<controller>/view',
+                '<module:\w+>/<controller:\w+>/<action:\w+>/<id:\d+>' => '<module>/<controller>/<action>',
+                '<module:\w+>/<controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
 			),
 		),
 		'user' => array(
