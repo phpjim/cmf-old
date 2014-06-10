@@ -41,6 +41,7 @@ class JimDeploy
     private static function deployBootstrapFiles()
     {
         $rootPath = realpath(Config::value('yiinitializr.app.root'));
+        self::$_params['{PROJECT_ROOT}'] = $rootPath . '/';
         $files = Config::value('yiinitializr.app.files.bootstrap');
 
         foreach( $files as $file )
@@ -62,6 +63,7 @@ class JimDeploy
 
         self::setDBConfig($commonConfigFiles['env']);
         self::setGiiConfig($commonConfigFiles['env']);
+        self::setNginxConfig();
     }
 
     private static function setDBConfig($filePath)
@@ -145,5 +147,36 @@ class JimDeploy
             $file = strtr($file,self::$_params);
             file_put_contents($filePath, $file);
         }
+    }
+
+    private static function setNginxConfig(){
+        if (Console::confirm("\nDid you need configure nginx?"))
+        {
+            self::$_params['{PHPCGI_PASS}'] = Console::prompt('Please, enter fastcgi_pass:', array('default' => '127.0.0.1:9000'));
+
+            if (Console::confirm("\nDid you need configure frontend?")){
+                self::$_params['{LISTEN_FRONTEND_IP}'] = Console::prompt('Please, enter listen ip:', array('default' => '*'));
+                self::$_params['{LISTEN_FRONTEND_PORT}'] = Console::prompt('Please, enter listen ip:', array('default' => '80'));
+                self::$_params['{LISTEN_FRONTEND_DOMAIN}'] = Console::prompt('Please, enter listen ip:', array('default' => 'LOCALHOST'));
+
+                $configFile = self::$_params['{PROJECT_ROOT}'] . '_config/nginx/frontend.conf';
+                $file = file_get_contents($configFile);
+                $file = strtr($file,self::$_params);
+                file_put_contents($configFile, $file);
+            }
+            if (Console::confirm("\nDid you need configure backend?")){
+                self::$_params['{LISTEN_BACKEND_IP}'] = Console::prompt('Please, enter listen ip:', array('default' => '*'));
+                self::$_params['{LISTEN_BACKEND_PORT}'] = Console::prompt('Please, enter listen ip:', array('default' => '80'));
+                self::$_params['{LISTEN_BACKEND_DOMAIN}'] = Console::prompt('Please, enter listen ip:', array('default' => 'LOCALHOST'));
+
+                $configFile = self::$_params['{PROJECT_ROOT}'] . '_config/nginx/backend.conf';
+                $file = file_get_contents($configFile);
+                $file = strtr($file,self::$_params);
+                file_put_contents($configFile, $file);
+            }
+            Console::output("\n%gnginx configuration process finished.%n");
+        }
+        else
+            Console::output("\n%gSkeep nginx configuration.%n");
     }
 }
