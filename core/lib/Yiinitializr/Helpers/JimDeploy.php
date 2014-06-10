@@ -35,7 +35,7 @@ class JimDeploy
             self::deployConfigFiles();
         }
         else
-            exit("\n%RDeploy aborted%n.\n");
+            Console::output("\n%RDeploy aborted%n.\n");
     }
 
     private static function deployBootstrapFiles()
@@ -75,7 +75,7 @@ class JimDeploy
         }
         else
         {
-            Console::output("\n%gStart DB configuration.%n");
+            Console::output("\n%gStart DB configuration.%n\n");
 
             $serverHost = Console::prompt('Please, enter your MySQL server host: ', array('default' => 'localhost'));
             $serverHostPort = Console::prompt('Please, enter your MySQL server port: ', array('default' => '3306'));
