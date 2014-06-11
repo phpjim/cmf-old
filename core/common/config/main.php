@@ -10,6 +10,7 @@
 return array(
 	'name' => '{APPLICATION NAME}',
 	'preload' => array('log'),
+    'sourceLanguage'    => 'en',
 	'aliases' => array(
         'frontend' => JIM_ROOT . 'core/frontend',
         'common' => JIM_ROOT . 'core/common',
@@ -18,19 +19,29 @@ return array(
 	),
 	'import' => array(),
 	'components' => array(
+        'authManager'=>array(
+            'class'=>'\\common\\components\\CDbAuthManager',
+        ),
 		'errorHandler' => array(
 			'errorAction' => 'site/error',
 		),
+        'EntityManager' => array(
+            'class'=>'\\common\\components\\EntityManager'
+        ),
 		'log' => array(
 			'class'  => 'CLogRouter',
 			'routes' => array(
-				array(
-					'class'        => 'CDbLogRoute',
-					'connectionID' => 'db',
-					'levels'       => 'error, warning',
-				),
+                array(
+                    'class'        => 'CDbLogRoute',
+                    'connectionID' => 'db',
+                    'logTableName' => '{{syslog}}',
+                    'levels'       => 'error, warning',
+                ),
 			),
 		),
+        'cache'=>array(
+            'class'=>'system.caching.CFileCache',
+        ),
 	),
 	// application parameters
 	'params' => array(
