@@ -1,15 +1,16 @@
 <?php
+namespace application\controllers;
+//use application\components\Controller;
+use \Yii;
 /**
  *
  * SiteController class
  *
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @link http://www.ramirezcobos.com/
- * @link http://www.2amigos.us/
- * @copyright 2013 2amigOS! Consultation Group LLC
- * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
+ * @author Vadims Bucinskis <vadim.buchinsky@gmail.com>
+ * @copyright 2014 MaWebSolutions team.
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-class SiteController extends EController
+class SiteController extends \CController
 {
 	public function actionIndex()
 	{
